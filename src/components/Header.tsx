@@ -6,11 +6,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
+    { label: "Accueil", href: "/accueil" },
     { label: "Protocoles", href: "#protocoles" },
-    { label: "Défenses", href: "#defenses" },
-    { label: "Survie Tech", href: "#survie-tech" },
-    { label: "Résistance", href: "#resistance" },
     { label: "Chat", href: "/chat" },
+    { label: "Serveurs", href: "/serveurs" },
+    
+    
   ];
 
   return (
