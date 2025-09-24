@@ -1,16 +1,17 @@
 import Header from "@/components/Header";
-import Serveurs from "@/components/Serveurs";
+import InscriptionForm from "@/components/InscriptionForm";
 
 
-const Listeserveurs = () => {
+
+const Inscription = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header /> 
-      <Serveurs />
+      <InscriptionForm />
       <main>
       </main>
     </div>
   );
 };
 
-export default Listeserveurs;
+export default Inscription;

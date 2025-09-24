@@ -1,16 +1,17 @@
+import ChattApp from "@/components/ChattApp";
 import Header from "@/components/Header";
-import Serveurs from "@/components/Serveurs";
 
 
-const Listeserveurs = () => {
+
+const ChatPage = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header /> 
-      <Serveurs />
+      <Header />
       <main>
+        <ChattApp /> 
       </main>
     </div>
   );
 };
 
-export default Listeserveurs;
+export default ChatPage;

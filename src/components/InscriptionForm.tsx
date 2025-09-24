@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // <-- Import de useNavigate
 import styles from "./LogIn.module.css"; // Import du CSS Module
 
-const LogIn = () => {
+const Inscription = () => {
   const [survivorName, setsurvivorName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // <-- Hook pour naviguer
 
@@ -16,6 +17,11 @@ const LogIn = () => {
       return;
     }
 
+    if (password != confirmPassword) {
+        setError("Le mot de passe et sa confirmation sont différents.")
+        return; 
+    }
+
     setError("");
     console.log("Email:", survivorName);
     console.log("Mot de passe:", password);
@@ -23,14 +29,15 @@ const LogIn = () => {
     // Réinitialisation des champs
     setsurvivorName("");
     setPassword("");
+    setconfirmPassword(""); 
 
     // Redirection vers la page d'accueil (ou autre)
-    navigate("/accueil"); // <-- Ici, le chemin doit correspondre à ta route définie
+    navigate("/"); // <-- Ici, le chemin doit correspondre à ta route définie
   };
 
   return (
     <div className={styles.container}>
-      <h2>Connexion</h2>
+      <h2>Formulaire d'inscription</h2>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -55,12 +62,23 @@ const LogIn = () => {
           />
         </div>
 
+        <div className={styles.formGroup}>
+          <label>Confirmez votre mot de passe : </label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setconfirmPassword(e.target.value)}
+            placeholder="Retapez votre mot de passe"
+            required
+          />
+        </div>
+
         <button id="button" type="submit">
-          Se connecter
+          S'inscrire
         </button>
       </form>
     </div>
   );
 };
 
-export default LogIn;
+export default Inscription;

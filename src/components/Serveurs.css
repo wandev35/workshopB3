@@ -1,0 +1,50 @@
+/* Serveurs.css */
+
+table {
+  width: 50%; /* largeur réduite */
+  margin: 20px auto; /* centre le tableau */
+  border-collapse: separate; /* nécessaire pour border-radius */
+  border-spacing: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 10px; /* coins arrondis */
+  overflow: hidden; /* arrondi effectif */
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #ff8c00; /* orange */
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+tr:hover td {
+  background-color: #ffe5b4; /* léger orange au survol */
+  transition: background-color 0.3s ease;
+}
+
+/* Premier et dernier th pour coins arrondis */
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* Dernière ligne pour arrondir les coins du bas */
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}

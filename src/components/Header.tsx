@@ -1,17 +1,15 @@
 import { Shield, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Import ajouté
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate(); // <-- Hook pour naviguer
 
   const navItems = [
-    { label: "Accueil", href: "/accueil" },
-    { label: "Protocoles", href: "#protocoles" },
-    { label: "Chat", href: "/chat" },
-    { label: "Serveurs", href: "/serveurs" },
-    
-    
+    { label: "Accueil", href: "/accueil" },,
+    { label: "Salons", href: "/serveurs" },
   ];
 
   return (
@@ -19,13 +17,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <Shield className="h-6 w-6" />
-            </div>
-            <div>
-              <div className="text-xl font-bold text-foreground">WasteLAN</div>
-              <div className="text-sm text-muted-foreground">Réseau Post-Apocalyptique</div>
+          <div className="flex items-center gap-3">ost-Apocalyptique</div>
             </div>
           </div>
 
@@ -43,9 +35,18 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <Shield className="h-6 w-6" />
+            </div>
+            <div>
+              <div className="text-xl font-bold text-foreground">WasteLAN</div>
+              <div className="text-sm text-muted-foreground">Réseau P
           <div className="hidden md:block">
-            <Button className="btn-wasteland">
-              Inscription 
+            <Button
+              className="btn-wasteland"
+              onClick={() => navigate("/")} // <-- Redirection ajoutée
+            >
+              Déconnexion
             </Button>
           </div>
 
@@ -74,7 +75,10 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button className="btn-wasteland mt-4">
+              <Button
+                className="btn-wasteland mt-4"
+                onClick={() => navigate("/")} // <-- Redirection mobile
+              >
                 Rejoindre le Réseau
               </Button>
             </nav>
