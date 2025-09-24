@@ -14,17 +14,35 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button 
+          {/* <Button 
             className="btn-wasteland text-lg px-10 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('chat-section')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Activer le Réseau
-          </Button>
+          </Button> */}
           <Button 
             className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Manuel de Survie
+          </Button>
+          <Button 
+            className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
+            onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Encyclopédie Participative
+          </Button>
+          <Button 
+            className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
+            onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Messagerie Privée
+          </Button>
+          <Button 
+            className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
+            onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Centre des comunautées
           </Button>
         </div>
       </div>

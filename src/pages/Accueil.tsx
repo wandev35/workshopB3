@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
 
 const Accueil = () => {
   return (
@@ -8,7 +7,6 @@ const Accueil = () => {
       <Header />
       <main>
         <HeroSection />
-        <FeaturesSection />
       </main>
     </div>
   );
