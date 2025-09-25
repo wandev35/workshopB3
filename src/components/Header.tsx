@@ -11,6 +11,7 @@ const Header = () => {
   const navItems = [
     { label: "Accueil", href: "/accueil" },
     { label: "Salons", href: "/serveurs" },
+    { label: "Inscription", href: "/inscription" },
   ];
 
   // 👇 Ici on cache le bouton si on est sur la page d'index "/"
