@@ -10,7 +10,7 @@ export default function SimpleTable() {
     navigate("/chat");
   };
     return (
-    <table cellPadding="5" style={{ borderCollapse: "collapse" }}>
+    <table cellP  adding="5" style={{ borderCollapse: "collapse" }}>
       <thead>
         <tr>
           <th>Nom du salon</th>
