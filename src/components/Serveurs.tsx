@@ -13,7 +13,6 @@ export default function SimpleTable() {
     <table cellPadding="5" style={{ borderCollapse: "collapse" }}>
       <thead>
         <tr>
-          <th>Numéro</th>
           <th>Nom du salon</th>
         </tr>
       </thead>
@@ -25,10 +24,56 @@ export default function SimpleTable() {
             }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
-            <td>1</td>
-            <td>Quimper</td>
+            <td>Général</td>
+          </tr>
+          <tr onClick={() => handleRowClick()}
+            style={{
+              cursor: "pointer", // pour montrer que c'est cliquable
+              backgroundColor: "#f9f9f9",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
+            <td>Urgences</td>
+          </tr>
+          <tr onClick={() => handleRowClick()}
+            style={{
+              cursor: "pointer", // pour montrer que c'est cliquable
+              backgroundColor: "#f9f9f9",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
+            <td>Médecine</td>
+          </tr>
+          <tr onClick={() => handleRowClick()}
+            style={{
+              cursor: "pointer", // pour montrer que c'est cliquable
+              backgroundColor: "#f9f9f9",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
+            <td>Vie Politique</td>
+          </tr>
+          <tr onClick={() => handleRowClick()}
+            style={{
+              cursor: "pointer", // pour montrer que c'est cliquable
+              backgroundColor: "#f9f9f9",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
+            <td>Entraide</td>
+          </tr>
+          <tr onClick={() => handleRowClick()}
+            style={{
+              cursor: "pointer", // pour montrer que c'est cliquable
+              backgroundColor: "#f9f9f9",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e0f7fa")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}>
+            <td>Gestion des stocks mutualisés</td>
           </tr>
       </tbody>
     </table>
+
+    
   )
 }
