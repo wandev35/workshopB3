@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // <-- Import de useNavigate
-import styles from "./LogIn.module.css"; // Import du CSS Module
+import { useNavigate } from "react-router-dom";
+import styles from "./LogIn.module.css";
 
 const Inscription = () => {
   const [survivorName, setsurvivorName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // <-- Hook pour naviguer
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!survivorName || !password) {
@@ -17,28 +18,51 @@ const Inscription = () => {
       return;
     }
 
-    if (password != confirmPassword) {
-        setError("Le mot de passe et sa confirmation sont différents.")
-        return; 
+    if (password !== confirmPassword) {
+      setError("Le mot de passe et sa confirmation sont différents.");
+      return;
     }
 
     setError("");
-    console.log("Email:", survivorName);
-    console.log("Mot de passe:", password);
 
-    // Réinitialisation des champs
-    setsurvivorName("");
-    setPassword("");
-    setconfirmPassword(""); 
+    try {
+      // 👇 Envoi des infos au backend
+      const response = await fetch("http://192.168.1.2:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: survivorName,
+          password: password,
+        }),
+      });
 
-    // Redirection vers la page d'accueil (ou autre)
-    navigate("/"); // <-- Ici, le chemin doit correspondre à ta route définie
+      if (!response.ok) {
+        throw new Error(`Erreur ${response.status}`);
+      }
+
+      const data = await response.json();
+      setMessage("Inscription réussie ✅ " + JSON.stringify(data));
+
+      // Réinitialisation des champs
+      setsurvivorName("");
+      setPassword("");
+      setconfirmPassword("");
+
+      // Redirection (par ex. page d'accueil)
+      navigate("/accueil");
+
+    } catch (err: any) {
+      setError("Erreur lors de l'inscription : " + err.message);
+    }
   };
 
   return (
     <div className={styles.container}>
       <h2>Formulaire d'inscription</h2>
       {error && <p className={styles.error}>{error}</p>}
+      {message && <p className={styles.success}>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <label>Nom de Survivant</label>
@@ -63,7 +87,7 @@ const Inscription = () => {
         </div>
 
         <div className={styles.formGroup}>
-          <label>Confirmez votre mot de passe : </label>
+          <label>Confirmez votre mot de passe :</label>
           <input
             type="password"
             value={confirmPassword}

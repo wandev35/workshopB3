@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="min-h-[80vh] flex items-center justify-center px-4 py-20">
       <div className="container mx-auto text-center max-w-5xl">
@@ -20,29 +23,34 @@ const HeroSection = () => {
           >
             Activer le Réseau
           </Button> */}
+          
           <Button 
             className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Manuel de Survie
           </Button>
+
           <Button 
             className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Encyclopédie Participative
           </Button>
+
           <Button 
             className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Messagerie Privée
           </Button>
+
+          {/* ✅ Redirection vers /serveurs */}
           <Button 
             className="btn-wasteland-outline text-lg px-10 py-4 h-auto font-semibold"
-            onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => navigate("/serveurs")}
           >
-            Centre des comunautées
+            Centre des communautés
           </Button>
         </div>
       </div>

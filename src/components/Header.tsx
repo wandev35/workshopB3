@@ -1,16 +1,20 @@
 import { Shield, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     { label: "Accueil", href: "/accueil" },
     { label: "Salons", href: "/serveurs" },
   ];
+
+  // 👇 Ici on cache le bouton si on est sur la page d'index "/"
+  const isIndexPage = location.pathname === "/";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
@@ -43,14 +47,16 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button
-              className="btn-wasteland"
-              onClick={() => navigate("/")}
-            >
-              Déconnexion
-            </Button>
-          </div>
+          {!isIndexPage && ( // 👈 bouton masqué si on est sur "/"
+            <div className="hidden md:block">
+              <Button
+                className="btn-wasteland"
+                onClick={() => navigate("/")}
+              >
+                Déconnexion
+              </Button>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
           <Button
@@ -77,15 +83,18 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button
-                className="btn-wasteland mt-4"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  navigate("/");
-                }}
-              >
-                Déconnexion
-              </Button>
+
+              {!isIndexPage && ( // 👈 idem pour mobile
+                <Button
+                  className="btn-wasteland mt-4"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/");
+                  }}
+                >
+                  Déconnexion
+                </Button>
+              )}
             </nav>
           </div>
         )}
